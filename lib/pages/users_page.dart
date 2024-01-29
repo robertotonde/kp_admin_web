@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:kp_admin_web/widgets/users_data_list.dart';
 import '../methods/common_methods.dart';
 
 class UsersPage extends StatefulWidget
@@ -45,15 +47,15 @@ class _UsersPageState extends State<UsersPage>
               Row(
                 children: [
                   cMethods.header(2, "USER ID"),
-                  cMethods.header(1, "USER NAME"),
-                  cMethods.header(1, "USER EMAIL"),
+                  cMethods.header(1, "NAME"),
+                  cMethods.header(1, "EMAIL"),
                   cMethods.header(1, "PHONE"),
                   cMethods.header(1, "ACTION"),
                 ],
               ),
 
               //display data
-
+              UsersDataList(),
             ],
           ),
         ),

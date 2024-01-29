@@ -4,25 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:kp_admin_web/methods/common_methods.dart';
 
 
-class DriversDataList extends StatefulWidget {
-  const DriversDataList({super.key});
+class UsersDataList extends StatefulWidget {
+  const UsersDataList({super.key});
 
   @override
-  State<DriversDataList> createState() => _DriversDataListState();
+  State<UsersDataList> createState() => _UsersDataListState();
 }
 
 
 
-class _DriversDataListState extends State<DriversDataList>
+class _UsersDataListState extends State<UsersDataList>
 {
-  final driversRecordsFromDatabase = FirebaseDatabase.instance.ref().child("drivers");
+  final usersRecordsFromDatabase = FirebaseDatabase.instance.ref().child("users");
   CommonMethods cMethods = CommonMethods();
 
   @override
   Widget build(BuildContext context)
   {
     return StreamBuilder(
-      stream: driversRecordsFromDatabase.onValue,
+      stream: usersRecordsFromDatabase.onValue,
       builder: (BuildContext context, snapshotData)
       {
         if(snapshotData.hasError)
@@ -69,38 +69,17 @@ class _DriversDataListState extends State<DriversDataList>
 
                 cMethods.data(
                   1,
-                  Image.network(
-                    itemsList[index]["photo"],
-                    width: 50,
-                    height: 50,
-                  ),
+                  Text(itemsList[index]["name"].toString()),
                 ),
 
                 cMethods.data(
                   1,
-                  Text(itemsList[index]["name"].toString().toString()),
-                ),
-
-                cMethods.data(
-                  1,
-                  Text(
-                      // ignore: prefer_interpolation_to_compose_strings
-                      itemsList[index]["car_details"]["carModel"].toString() + " - " +
-                          itemsList[index]["car_details"]["carNumbe"].toString()
-                  ),
+                  Text(itemsList[index]["email"].toString()),
                 ),
 
                 cMethods.data(
                   1,
                   Text(itemsList[index]["phone"].toString()),
-                ),
-
-                cMethods.data(
-                  1,
-                  itemsList[index]["earnings"] != null ?
-                  // ignore: prefer_interpolation_to_compose_strings
-                  Text("\$ " + itemsList[index]["earnings"].toString())
-                      : const Text("\$ 0"),
                 ),
 
                 cMethods.data(

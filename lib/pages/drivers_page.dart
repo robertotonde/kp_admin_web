@@ -55,12 +55,8 @@ class _DriversPageState extends State<DriversPage>
                 ],
               ),
 
-
-     DriversDataList()
-
-
               //display data
-
+              DriversDataList(),
             ],
           ),
         ),
